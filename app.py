@@ -2,12 +2,17 @@
 
 from configparser import ConfigParser
 
+class IniParser:
+    # def __init__(self):
+        
 
-config= ConfigParser()
-print(config.sections())
 
-config.read('configs.ini')
-print(config.sections())
+    def read(self,x, y):
+        config= ConfigParser()
+        config.read('configs.ini')
+        print(config[x][y])
 
-print(config['DEFAULT']['title'])
-print(config['database']['host'])
+
+
+
+# print(config['database']['host'])
