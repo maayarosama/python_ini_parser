@@ -1,4 +1,7 @@
+# flake8: noqa
+
 from configparser import ConfigParser
+
 
 config= ConfigParser()
 print(config.sections())
