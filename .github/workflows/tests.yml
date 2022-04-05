@@ -29,6 +29,5 @@ jobs:
       - name: Run tests
         run: |
           export PYTHONPATH=src
-          pytest tests/test.py
-
-      
+          export PYTHONPATH=.
+          pytest tests/*
