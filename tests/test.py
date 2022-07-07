@@ -1,27 +1,8 @@
 # flake8: noqa
-import os
-import re
-# import sys
-# sys.path.insert(1, '../src')
-# import app
 
-# from INNI_PARSER.src.app import IniParser
 
-# from ../srcpip3 install import app 
+
 from iniparser import IniParser
-
-string ="""" [DEFAULT]
-title = Hello world
-compression = yes
-compression_level = 9
-
-[database]
-host = 127.0.0.1
-user = username
-pass = password
-alive = no
-"""
-
 
     
 ini_parse=IniParser("""[DEFAULT]
@@ -34,13 +15,35 @@ host = 127.0.0.1
 user = username
 pass = password
 keep-alive = no
-
                     """)
 
 
 
-def test():
-    assert ini_parse.getSectionInfo('database') != ""
-    assert ini_parse.getSpecficInfo('database','host') != ""
-    assert ini_parse.getAllInfo() != ""
 
+#Split into different functions
+def test_sections():
+    assert ini_parse.get_section('database') == {'host': '127.0.0.1', 'user': 'username', 'pass': 'password', 'alive': 'no'}
+    assert ini_parse.get_section('DEFAULT') ==     {'title': 'Hello world', 'compression': 'yes', 'compression_level': '9'}
+
+
+def test_key():
+    assert ini_parse.get_key('database','host') == "127.0.0.1"
+    assert ini_parse.get_key('database','user') == "username"
+    assert ini_parse.get_key('database','pass') == "password"
+    assert ini_parse.get_key('database','alive') == "no"
+
+
+
+    
+    
+def test_dict():
+    assert ini_parse.to_dict() == {'DEFAULT': {'title': 'Hello world', 'compression': 'yes', 'compression_level': '9'}, 'database': {'host': '127.0.0.1', 'user': 'username', 'pass': 'password', 'alive': 'no'}}
+
+def test_str():
+    assert str(ini_parse) != ''
+    
+def test_validate_str():
+    assert ini_parse.validstr() == "balanced"
+
+
+    
