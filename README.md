@@ -1,12 +1,12 @@
 A simple python ini parser with tests.
 
-To run the project:
+**To run the project:**
 
 ```bash
 python3 main.py
 ```
 
-To run the tests:
+**To run the tests:**
 
 ```bash
 export PYTHONPATH=.
