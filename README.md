@@ -13,3 +13,5 @@ export PYTHONPATH=.
 pytest tests/*
 
 ```
+
+test
